@@ -1,4 +1,5 @@
 ﻿set nocompatible
+"filetype on
 filetype off
 
 
@@ -183,27 +184,27 @@ set imdisable
 set iminsert=0
 set imsearch=0
 
-"-------------------------------------------------
-if has('multi_byte_ime')
-    highlight Cursor guifg=#000d18 guibg=#8faf9f gui=bold
-    highlight CursorIM guifg=NONE guibg=#ecbcbc
-endif
-"------------------------------------------------今効いていない-
-
-set updatetime=1000
-function! s:winime_off()
-    if exists("g:loaded_winime") && (has('win32') || has('win64'))
-        if mode() !=# 'i'
-            call winime#off()
-            call feedkeys(mode() ==# 'i' ? "\<C-g>\<ESC>" : "g\<ESC>", 'n')
-        endif
-    endif
-endfunction
-augroup winime_off
-    autocmd!
-    autocmd CursorHold,CursorHoldI * call s:winime_off()
-augroup END
-"-------------------------------------------------今効いていない
+""-------------------------------------------------
+"if has('multi_byte_ime')
+"    highlight Cursor guifg=#000d18 guibg=#8faf9f gui=bold
+"    highlight CursorIM guifg=NONE guibg=#ecbcbc
+"endif
+""------------------------------------------------今効いていない-
+"
+"set updatetime=1000
+"function! s:winime_off()
+"    if exists("g:loaded_winime") && (has('win32') || has('win64'))
+"        if mode() !=# 'i'
+"            call winime#off()
+"            call feedkeys(mode() ==# 'i' ? "\<C-g>\<ESC>" : "g\<ESC>", 'n')
+"        endif
+"    endif
+"endfunction
+"augroup winime_off
+"    autocmd!
+"    autocmd CursorHold,CursorHoldI * call s:winime_off()
+"augroup END
+""-------------------------------------------------今効いていない
 autocmd FileType * setlocal formatoptions-=ro
 
 command! -nargs=1 -complete=file Rename f <args>|call delete(expand('#'))|w
@@ -216,18 +217,22 @@ command! -nargs=1 -complete=file Rename f <args>|call delete(expand('#'))|w
 "nnoremap gk k
 
 "Window moving
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-nnoremap <C-h> <C-w>h
+"nnoremap <C-j> <C-w>j
+"nnoremap <C-k> <C-w>k
+"nnoremap <C-l> <C-w>l
+"nnoremap <C-h> <C-w>h
+nnoremap <C-j> j
+nnoremap <C-k> k
+nnoremap <C-l> l
+nnoremap <C-h> h
 
-" F2で前のバッファ
-nnoremap <F2> <ESC>:bp<CR>
-" F3で次のバッファ
-nnoremap <F3> <ESC>:bn<CR>
-" F4でバッファを削除する
-nnoremap <F4> <ESC>:bnext \| bdelete #<CR>
-command! Bw :bnext \| bdelete #
+"" F2で前のバッファ
+"nnoremap <F2> <ESC>:bp<CR>
+"" F3で次のバッファ
+"nnoremap <F3> <ESC>:bn<CR>
+"" F4でバッファを削除する
+"nnoremap <F4> <ESC>:bnext \| bdelete #<CR>
+"command! Bw :bnext \| bdelete #
 
 " insert mode での移動
 inoremap <C-e> <END>
@@ -242,7 +247,12 @@ inoremap <C-l> <Right>
 noremap <Space>j <C-f>
 noremap <Space>k <C-b>
 
-inoremap <Space><Space> - 
+autocmd FileType md inoremap <Space><Space> - 
+
+" php
+autocmd FileType php inoremap <Space><Space> <?php  ?><Left><Left><Left>
+autocmd FileType php inoremap <Space>[ ['']<Left><Left>
+autocmd FileType php inoremap <C-4> $_
 
 " 行頭，行末
 noremap <Space>h ^

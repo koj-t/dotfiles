@@ -37,7 +37,7 @@ vk1Csc079::Send,{Blind}{BS}
 ;Ctrk+Muhenkan Delete
 ;Muhenkan+Henkan Delete
 ^vk1Csc079::Send,{DEL}
-vk1Dsc07B & vk1Csc079::Send,{Blinde}{DEL}
+vk1Dsc07B & vk1Csc079::Send,{Blind}{DEL}
 
 vk1Dsc07B & C::Send,{Blind}{ESC}
 vk1Dsc07B & V::Send,{Home}+{End}
@@ -55,10 +55,20 @@ vkE2sc073::_
 
 ^vkBCsc033::Send,{<}{>}{Left}
 ^vkBAsc028::Send,{*}{*}{Left}
+^/::Send,{?}{?}{Left}
 ^8::Send,{(}{)}{Left}
 ^[::Send,{`{}{`}}{Left}
 ^2::Send,{"}{"}{Left}
 ^7::Send,{'}{'}{Left}
+
+vk1Dsc07B & vkBCsc033::Send,{<}{>}{Left}
+vk1Dsc07B & vkBAsc028::Send,{*}{*}{Left}
+vk1Dsc07B & 8::Send,{(}{)}{Left}
+vk1Dsc07B & [::Send,{`{}{`}}{Left}
+vk1Dsc07B & 2::Send,{"}{"}{Left}
+vk1Dsc07B & 7::Send,{'}{'}{Left}
+
+
 
 ;vk1Dsc07B & R::Run,"C:/Users/cyber/Documents/Dropbox/"
 ;vk1Dsc07B & D::Run,"C:/Users/cyber/Documents/"
