@@ -18,4 +18,4 @@ $RECYCLE.BIN/
 #my global_gitignore
 *.o
 *.psy
-*.exe
+#*.exe
