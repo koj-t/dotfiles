@@ -1,0 +1,6 @@
+open cygwin.com
+ftp
+
+ascii
+get pub/cygwinports/setup-x86_64.exe
+quit
