@@ -247,12 +247,14 @@ inoremap <C-l> <Right>
 noremap <Space>j <C-f>
 noremap <Space>k <C-b>
 
-autocmd FileType md inoremap <Space><Space> - 
+inoremap <Space><Space> - 
 
 " php
 autocmd FileType php inoremap <Space><Space> <?php  ?><Left><Left><Left>
 autocmd FileType php inoremap <Space>[ ['']<Left><Left>
 autocmd FileType php inoremap <C-4> $_
+
+autocmd FileType md colorscheme koehler
 
 " 行頭，行末
 noremap <Space>h ^

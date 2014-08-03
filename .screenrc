@@ -1,0 +1,42 @@
+#コマンドモード
+escape ^Tt
+
+#背景色消去
+defbce "on"
+
+#画面下部に起動ウィンドウ名を出す
+#shelltitle "$ |zsh"
+
+# コマンドorカレントディレクトリ
+#caption always "%?%F%{= wk}%:%{= ww}%?%-w%{=u Wk}%n %t%{-}%+w"
+hardstatus alwayslastline "%-w%{=b bw}%n %t%{-}%+w"
+
+# ウインドウリスト
+windowlist title  '%{r}Num Flags Title%030=Hardstatus%='
+windowlist string '%{kw}%3n %{kw}%f%011=%{-}%t%030=%h%='
+
+#起動時にでるメッセージを表示させない
+startup_message off 
+
+#detach
+autodetach on
+
+#vimとかの後にウインドウを一掃する
+altscreen on
+
+#ビープを鳴らさない
+vbell off 
+
+#Messages
+msgwait 2
+msgminwait 1
+
+#putty bindings
+bindkey "^[[1;5C" next
+bindkey "^[[1;5D" prev
+bindkey "^[[1;5A" screen
+bindkey "^[[1;5B" windowlist
+bindkey "[1;5I" next
+bindkey "[1;6I" prev
+termcapinfo xterm "ks=\E[?1l\E:ku=\E[A:kd=\E[B:kl=\E[D:kr=\E[C:kh=\E[5~:kH=\E[F"
+
