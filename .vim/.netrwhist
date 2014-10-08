@@ -1,6 +1,3 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/cygdrive/c/Users/cyber/Desktop/Dropbox/Memo'
-let g:netrw_dirhist_2='/cygdrive/c/Users/cyber/Desktop/Dropbox/Diary'
-let g:netrw_dirhist_3='/cygdrive/c/Users/cyber/Desktop/Dropbox/Memo'
-let g:netrw_dirhist_4='/cygdrive/c/Users/cyber/Desktop/Dropbox/Diary'
+let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_1='/cygdrive/c/Users/sc/Dropbox/Memo'

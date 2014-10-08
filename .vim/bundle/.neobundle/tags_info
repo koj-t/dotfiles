@@ -8,6 +8,7 @@ molokai
 neobundle.vim
 neocomplcache
 neosnippet
+neosnippet-snippets
 open-browser.vim
 python-mode
 rdark
