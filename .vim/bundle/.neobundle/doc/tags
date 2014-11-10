@@ -1310,6 +1310,7 @@ unite-options-unique	unite.txt	/*unite-options-unique*
 unite-options-update-time	unite.txt	/*unite-options-update-time*
 unite-options-verbose	unite.txt	/*unite-options-verbose*
 unite-options-vertical	unite.txt	/*unite-options-vertical*
+unite-options-vertical-preview	unite.txt	/*unite-options-vertical-preview*
 unite-options-winheight	unite.txt	/*unite-options-winheight*
 unite-options-winwidth	unite.txt	/*unite-options-winwidth*
 unite-options-wipe	unite.txt	/*unite-options-wipe*
