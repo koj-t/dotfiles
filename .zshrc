@@ -21,7 +21,7 @@ export EDITOR=vim
 
 # openでいろいろ開く
 alias open=cygstart
-alias op=cygstart
+alias op=open
 
 # PCRE 互換の正規表現を使う
 setopt re_match_pcre
@@ -155,13 +155,8 @@ zstyle ':vcs_info:*' actionformats '[%s: %b|%a]'
 zstyle ':vcs_info:(svn|bzr):*' branchformat '%b:r%r'
 zstyle ':vcs_info:bzr:*' use-simple true
 
-#if is-at-least 4.3.10; then
-#  zstyle ':vcs_info:git:*' check-for-changes true
-#  zstyle ':vcs_info:git:*' stagedstr "+"
-#  zstyle ':vcs_info:git:*' unstagedstr "-"
 #  zstyle ':vcs_info:git:*' formats '[%s: %b] %c%u'
 #  zstyle ':vcs_info:git:*' actionformats '[%s: %b|%a] %c%u'
-#fi
 
 if is-at-least 4.3.10; then
   zstyle ':vcs_info:git:*' check-for-changes true
@@ -238,6 +233,23 @@ alias magic="ssh magic"
 alias z-aria='ssh -t z-aria "cd thesis/2013/B4/kojima && zsh"'
 alias aria='ssh -t aria "cd thesis/2013/B4/kojima && zsh"'
 
+alias camera1='ssh -f -N camera1;op http://localhost:15555'
+alias camera2='ssh -f -N camera2;op http://localhost:16666'
+
+$ afp-nas(){
+    ssh -f -N c-nas -L 1999:192.168.1.$1:548;
+    mkdir /Volumes/Public;
+    mount_afp afp://localhost:1999/Public /Volumes/Public;
+    open /Volumes/Public;
+}
+$ smb-nas(){
+    ssh -f -N c-nas -L 1999:192.168.1.$1:139;
+    mkdir /Volumes/Public;
+    mount_smbfs //GUEST@localhost:1999/Public /Volumes/Public;
+    open /Volumes/Public;
+}
+
+
 # git alias
 alias ga='git add .'
 alias ga-='git add -A'
@@ -263,9 +275,6 @@ export PATH=$PATH:/cygdrive/c/Windows/Microsoft.NET/Framework64/v4.0.30319
 
 # 画像変換
 alias je='jpeg2ps'
-
-
-alias dblec="ssh dblec"
 
 # screenのキャプション表示
 #case "${TERM}" in screen)
