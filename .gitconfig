@@ -13,3 +13,7 @@
     excludesfile = ~/.global_gitignore
 [merge]
     ff = false
+[fetch]
+	prune = true
+[branch]
+	autosetuprebase = always

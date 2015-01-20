@@ -885,6 +885,8 @@ g:unite_cursor_line_time		*g:unite_cursor_line_time*
 		cursor line highlight.
 		If it is "0.0", this feature will be disabled.
 		Note: This variable is deprecated.  Please use
+<<<<<<< HEAD
+=======
 		|unite#custom#profile()| instead.
 
 					*g:unite_kind_file_vertical_preview*
@@ -892,6 +894,7 @@ g:unite_kind_file_vertical_preview
 		If this variable is 1, Unite will open the preview window
 		vertically rather than horizontally.
 		Note: This variable is deprecated.  Please use
+>>>>>>> adb065269ed6fea3228f150f3b531eae3973b78f
 		|unite#custom#profile()| instead.
 
 ------------------------------------------------------------------------------
@@ -1373,6 +1376,12 @@ unite#mappings#get_current_filters()
 						*unite#set_profile()*
 unite#custom#profile({profile-name}, {option-name}, {value})
 		Set {profile-name} specialized {option-name} to {value}.
+<<<<<<< HEAD
+		Note: If you use single source in unite.vim commands with
+		omitting profile name and buffer name, "source/{source-name}"
+		is used.  Thus, you can define a source-specific profile.
+=======
+>>>>>>> adb065269ed6fea3228f150f3b531eae3973b78f
 
 		The options below are available:
 
@@ -1446,9 +1455,12 @@ unite#custom#profile({profile-name}, {option-name}, {value})
 		default context.
 		Note: If you want to change default context, you should use
 		"default" profile name.
+<<<<<<< HEAD
+=======
 		Note: If you use single source in unite.vim commands with
 		omitting profile name and buffer name, "source/{source-name}"
 		is used.  Thus, you can define a source-specific profile.
+>>>>>>> adb065269ed6fea3228f150f3b531eae3973b78f
 		Valid key context is in |unite-options|.  However, "-" is
 		substituted to "_", and "-" prefix is removed.
 
@@ -1686,7 +1698,14 @@ the context dictionary.
 						*unite-options-profile-name*
 		-profile-name={profile-name}		(String)
 		Specify a profile name.  The default profile name is the same
+<<<<<<< HEAD
+		as the buffer name.  However, if you use a single source and
+		omit the buffer name, "source/{source-name}" or "default" is
+		used.  This way you can define source-specific profiles.
+		Note: https://github.com/Shougo/unite.vim/issues/277
+=======
 		as the buffer name.
+>>>>>>> adb065269ed6fea3228f150f3b531eae3973b78f
 
 						*unite-options-input*
 		-input={input-text}
@@ -1947,6 +1966,8 @@ the context dictionary.
 		Restore the cursor in unite buffer.
 		Note: It is default behavior.
 
+<<<<<<< HEAD
+=======
 						*unite-options-vertical-preview*
 		-vertical-preview
 		If it is on, Unite will open the preview window
@@ -1954,6 +1975,7 @@ the context dictionary.
 		horizontally. It will take up half the width of the current
 		Unite buffer.
 
+>>>>>>> adb065269ed6fea3228f150f3b531eae3973b78f
 ==============================================================================
 SOURCES						*unite-sources*
 
@@ -3678,11 +3700,20 @@ A: >
 	\ })
 
 Q: I want to use file_rec/async in Windows environment.
+<<<<<<< HEAD
+You can use "files" command.  It is slower than find command, however, it is
+useful in Windows environment.
+https://github.com/mattn/files
+
+A: >
+	let g:unite_source_rec_async_command = 'files'
+=======
 
 A: You can use "files" command.  It is slower than find command, however, it
 is useful in Windows environment.
 https://github.com/mattn/files >
 	let g:unite_source_rec_async_command = 'files -A'
+>>>>>>> adb065269ed6fea3228f150f3b531eae3973b78f
 
 ==============================================================================
 vim:tw=78:ts=8:ft=help:norl:noet:fen:
