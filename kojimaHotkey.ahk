@@ -31,6 +31,9 @@ vk1Dsc07B & B::Send,{Blind}#{t}
 ;Muhenkan+Space Enter
 vk1Dsc07B & Space::Send,{Blind}{Enter}
 
+;Muhekan+. Application
+vk1Dsc07B & .::Send,+{F10}
+
 ;Henkan Backspace
 vk1Csc079::Send,{Blind}{BS}
 
@@ -86,3 +89,4 @@ vk1Dsc07B & G::Send,#{2}
 ;oy CtrlTab,Shift~
 ;m cygwin
 ;b Win+T
+;. Application
