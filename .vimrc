@@ -254,25 +254,25 @@ command! -nargs=1 -complete=file Rename f <args>|call delete(expand('#'))|w
 
 
 "Moving Mapping
-"nnoremap j gj
-"nnoremap k gk
-"nnoremap gj j
-"nnoremap gk k
+nnoremap j gj
+nnoremap k gk
+nnoremap gj j
+nnoremap gk k
 
 "Window moving
-"nnoremap <C-j> <C-w>j
-"nnoremap <C-k> <C-w>k
-"nnoremap <C-l> <C-w>l
-"nnoremap <C-h> <C-w>h
-nnoremap <C-j> j
-nnoremap <C-k> k
-nnoremap <C-l> l
-nnoremap <C-h> h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+"nnoremap <C-j> j
+"nnoremap <C-k> k
+"nnoremap <C-l> l
+"nnoremap <C-h> h
 
 "" F2で前のバッファ
-"nnoremap <F2> <ESC>:bp<CR>
+nnoremap <F2> <ESC>:bp<CR>
 "" F3で次のバッファ
-"nnoremap <F3> <ESC>:bn<CR>
+nnoremap <F3> <ESC>:bn<CR>
 "" F4でバッファを削除する
 "nnoremap <F4> <ESC>:bnext \| bdelete #<CR>
 "command! Bw :bnext \| bdelete #
@@ -313,7 +313,8 @@ nnoremap Y y$
 nnoremap ; :
 
 "改行
-noremap <CR> i<CR><Esc>
+"noremap <CR> i<CR><Esc>
+inoremap <silent>mm <Esc>o
 
 " Tabs
 nnoremap <Space>t t
@@ -333,6 +334,11 @@ nnoremap <silent> [unite]b   :<C-u>Unite buffer<CR>
 nnoremap <silent> [unite]f   :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
 nnoremap <silent> [unite]n   :<C-u>UniteWithBufferDir file/new<CR>
 
+nnoremap <silent> ,g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
+nnoremap <silent> ,rg :<C-u>UniteResume search-buffer<CR>
+
+
 nnoremap ga ggVG
 au   BufEnter *   execute ":lcd " . expand("%:p:h")
 
@@ -346,3 +352,14 @@ autocmd ColorScheme * highlight Pmenu cterm=none
 autocmd ColorScheme * highlight Normal ctermbg=black
 autocmd ColorScheme * highlight LineNr ctermfg=yellow
 colorscheme vividchalk
+
+
+autocmd QuickFixCmdPost *grep* cwindow
+
+" unite grep に ag(The Silver Searcher) を使う
+if executable('ag')
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+    let g:unite_source_grep_recursive_opt = ''
+endif
+
