@@ -200,6 +200,7 @@ RPROMPT="%1(v|%B%F{red}%1v%f%F{green}%C%f%b|%B%F{green}%~%f%b$WHITE)"
   PROMPT="%{${fg[white]}%}${HOST%%.*}${PROMPT}"
 ;
 
+export TERM=xterm-256color
 ##Title
 case "${TERM}" in
 kterm*|xterm*|)
@@ -219,13 +220,21 @@ alias mv='mv -i'
 alias ls="ls -F --color=auto --show-control-char"
 alias la="ls -aF"
 alias ll="ls -l"
+alias l="ls"
+alias lla="ls -la"
 alias j=jobs
 alias vi=vim
 alias more=less
+alias le="less -iMR"
 alias s-c=screen
 alias zrc="source ~/.zshrc"
 alias cdf="cd ~/Documents/Free"
 alias cdc="cd ~/Documents"
+
+# Global alias
+alias -g L="| less"
+alias -g G="| grep"
+
 
 # ssh
 alias wired="ssh wired"
@@ -251,8 +260,8 @@ $ smb-nas(){
 
 
 # git alias
-alias ga='git add .'
-alias ga-='git add -A'
+alias ga='git add -A'
+alias ga-='git add .'
 alias gc='git commit -m'
 alias go='git checkout'
 alias gb='git branch'
@@ -261,6 +270,7 @@ alias gp='git push'
 alias gt="git log --graph --pretty='format:%C(yellow)%h%Creset %s %Cgreen(%an)%Creset %Cred%d%Creset'"
 alias gl='git pull'
 alias g-k="startxwin >/dev/null 2>&1 ; export DISPLAY=localhost:0.0 ; gitk"
+alias gd='git diff'
 
 # other alias
 alias firefox="open firefox"
@@ -273,8 +283,6 @@ alias expend="open /cygdrive/c/Users/cyber/Dropbox/Diary/expenditure.xlsx &"
 export PATH=$PATH:/cygdrive/c/Windows/Microsoft.NET/Framework64/v4.0.30319
 #alias csc="/cygdrive/c/Windows/Microsoft.NET/Framework64/v4.0.30319/csc.exe"
 
-# 画像変換
-alias je='jpeg2ps'
 
 # screenのキャプション表示
 #case "${TERM}" in screen)

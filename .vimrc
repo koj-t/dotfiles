@@ -5,14 +5,16 @@ filetype off
 
 if has('vim_starting')
     set runtimepath+=~/.vim/bundle/neobundle.vim
-    call neobundle#rc(expand('~/.vim/bundle/'))
+    call neobundle#begin(expand('~/.vim/bundle/'))
 endif
 " originalrepos on github
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'VimClojure'
 NeoBundle 'Shougo/vimshell'
+NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
@@ -30,6 +32,27 @@ NeoBundle 'mattn/emmet-vim'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'rbtnn/winime.vim'
 
+NeoBundle 'Townk/vim-autoclose'
+
+NeoBundle "davidhalter/jedi-vim", {
+            \ "autoload": {
+            \   "filetypes": ["python", "python3", "djangohtml"],
+            \ },
+            \ "build": {
+            \   "mac": "pip install jedi",
+            \   "unix": "pip install jedi",
+            \ }}
+"let s:hooks = neobundle#get_hooks("jedi-vim")
+"function! s:hooks.on_source(bundle)
+"    " jediにvimの設定を任せると'completeopt+=preview'するので
+" 自動設定機能をOFFにし手動で設定を行う
+let g:jedi#auto_vim_configuration = 0
+" 補完の最初の項目が選択された状態だと使いにくいためオフにする
+let g:jedi#popup_select_first = 0
+"endfunction
+
+NeoBundle 'honza/snipmate-snippets'
+
 "Color Scheme------------------------------------
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'w0ng/vim-hybrid'
@@ -42,7 +65,13 @@ NeoBundle 'tomasr/molokai'
 NeoBundle 'vim-scripts/rdark'
 NeoBundle 'tpope/vim-vividchalk'
 NeoBundle 'Lokaltog/vim-distinguished'
+NeoBundle 'desert256.vim'
+let g:solarized_termtrans=1
 "------------------------------------------------
+
+call neobundle#end()
+
+"colorscheme desert
 
 let g:quickrun_config = {}
 let g:quickrun_config['markdown'] = {
@@ -66,15 +95,13 @@ let g:quickrun_config['cs'] =  {
 nnoremap <silent> pp :QuickRun<CR>
 
 "colorschemeの適用
-nnoremap <silent> cc :colorscheme desert<CR>
+"nnoremap <silent> cc :colorscheme desert<CR>
 
 "NeoBundle 'https://bitbucket.org/kovisoft/slimv'
 filetype plugin indent on     " required!
 filetype indent on
 
 " 画面表示の設定
-"colorscheme vividchalk
-colorscheme desert
 
 set number         " 行番号を表示する
 set ruler
@@ -118,6 +145,14 @@ set shiftwidth=4  " 自動インデントでずれる幅
 set softtabstop=4 " 連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅
 set autoindent    " 改行時に前の行のインデントを継続する
 set smartindent   " 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
+set nrformats-=octal
+
+
+set foldenable
+set foldmethod=indent
+set foldlevel=10 
+set foldnestmax=10
+set foldcolumn=2 
 
 " 動作環境との統合関連の設定
 " OSのクリップボードをレジスタ指定無しで Yank, Put 出来るようにする
@@ -131,6 +166,8 @@ set shellslash
 " インサートモードから抜けると自動的にIMEをオフにする
 set iminsert=0
 
+set t_ut=
+set t_Co=256
 
 " コマンドラインの設定
 " コマンドラインモードでTABキーによるファイル名補完を有効にする
@@ -163,10 +200,14 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+imap kk <Plug>(neosnippet_expand_or_jump)
+
 
 " SuperTab like snippets behavior.
 imap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate-snippets/snippets'
 
 " For snippet_complete marker.
 if has('conceal')
@@ -177,6 +218,7 @@ endif
 inoremap <silent> jj <ESC>
 "inoremap <silent> <C-j> <esc>
 inoremap <silent> <C-b> <Esc> 
+inoremap <silent> <C-]> <Esc>
 
 inoremap <silent> <C-w> <ESC>:w<CR>i
 
@@ -212,25 +254,25 @@ command! -nargs=1 -complete=file Rename f <args>|call delete(expand('#'))|w
 
 
 "Moving Mapping
-"nnoremap j gj
-"nnoremap k gk
-"nnoremap gj j
-"nnoremap gk k
+nnoremap j gj
+nnoremap k gk
+nnoremap gj j
+nnoremap gk k
 
 "Window moving
-"nnoremap <C-j> <C-w>j
-"nnoremap <C-k> <C-w>k
-"nnoremap <C-l> <C-w>l
-"nnoremap <C-h> <C-w>h
-nnoremap <C-j> j
-nnoremap <C-k> k
-nnoremap <C-l> l
-nnoremap <C-h> h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+"nnoremap <C-j> j
+"nnoremap <C-k> k
+"nnoremap <C-l> l
+"nnoremap <C-h> h
 
 "" F2で前のバッファ
-"nnoremap <F2> <ESC>:bp<CR>
+nnoremap <F2> <ESC>:bp<CR>
 "" F3で次のバッファ
-"nnoremap <F3> <ESC>:bn<CR>
+nnoremap <F3> <ESC>:bn<CR>
 "" F4でバッファを削除する
 "nnoremap <F4> <ESC>:bnext \| bdelete #<CR>
 "command! Bw :bnext \| bdelete #
@@ -248,25 +290,31 @@ inoremap <C-l> <Right>
 noremap <Space>j <C-f>
 noremap <Space>k <C-b>
 
-inoremap <Space><Space> - 
 
 " php
-autocmd FileType php inoremap <Space><Space> <?php  ?><Left><Left><Left>
 autocmd FileType php inoremap <Space>[ ['']<Left><Left>
 autocmd FileType php inoremap <C-4> $_
 
-autocmd FileType md colorscheme koehler
+" md
+"autocmd FileType markdown colorscheme koehler
+autocmd FileType markdown inoremap <Space><Space> - 
+
 
 " 行頭，行末
 noremap <Space>h ^
 noremap <Space>l $
 
+" 括弧移動
+nnoremap <Tab> %
+
 " 行末ヤンク
 nnoremap Y y$
+
 nnoremap ; :
 
 "改行
-noremap <CR> i<CR><Esc>
+"noremap <CR> i<CR><Esc>
+inoremap <silent>mm <Esc>o
 
 " Tabs
 nnoremap <Space>t t
@@ -285,3 +333,33 @@ nnoremap <silent> [unite]c   :<C-u>UniteWithCurrentDir -buffer-name=files buffer
 nnoremap <silent> [unite]b   :<C-u>Unite buffer<CR>
 nnoremap <silent> [unite]f   :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
 nnoremap <silent> [unite]n   :<C-u>UniteWithBufferDir file/new<CR>
+
+nnoremap <silent> ,g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
+nnoremap <silent> ,rg :<C-u>UniteResume search-buffer<CR>
+
+
+nnoremap ga ggVG
+au   BufEnter *   execute ":lcd " . expand("%:p:h")
+
+nnoremap <F8> yyp
+
+nnoremap <silent><Space>v :VimFiler -split -simple -winwidth=35 -no-quit<CR>
+nnoremap <silent><Space>, 'A
+
+
+autocmd ColorScheme * highlight Pmenu cterm=none
+autocmd ColorScheme * highlight Normal ctermbg=black
+autocmd ColorScheme * highlight LineNr ctermfg=yellow
+colorscheme vividchalk
+
+
+autocmd QuickFixCmdPost *grep* cwindow
+
+" unite grep に ag(The Silver Searcher) を使う
+if executable('ag')
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+    let g:unite_source_grep_recursive_opt = ''
+endif
+
