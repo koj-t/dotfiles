@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<root>
+ <appdef> 
+     <appname>MACVIM</appname> 
+     <equal>org.vim.MacVim</equal> 
+ </appdef>
+ <item>
+  <name>Private Key KANAtoBS</name>
+  <appendix>Change KANA to Backspace</appendix>
+  <identifier>private.app_KANA_to_Backspane</identifier>
+  <autogen>__KeyToKey__ KeyCode::JIS_KANA, KeyCode::DELETE</autogen>
+  </item>
+ <item>
+  <name>Private Key2 EISUtoCMD</name>
+  <appendix>Change EISU to COMMAND_R</appendix>
+  <identifier>private.app_EISU_to_COMMAND_R</identifier>
+  <autogen>__KeyToKey__ KeyCode::JIS_EISUU, KeyCode::COMMAND_R</autogen>
+ </item>
+ <item>
+  <name>Private Key3 CTRL+TAB Setting</name>
+  <appendix>Change COMMAND_L + TAB to CONTROL_R + TAB</appendix>
+  <identifier>private.app_commandL_tab_to_controlR_tab</identifier>
+  <autogen>__KeyToKey__ KeyCode::TAB, ModifierFlag::COMMAND_L, KeyCode::TAB, ModifierFlag::CONTROL_R,</autogen>
+ </item>
+ <item>
+  <name>Private Key4 WindowSwitcher(ALL)</name>
+  <appendix>Change CONTROL_L + TAB to OPTION_R + TAB</appendix>
+  <identifier>private.app_controlL_tab_to_optionR_tab</identifier>
+  <autogen>__KeyToKey__ KeyCode::TAB, ModifierFlag::CONTROL_L, KeyCode::TAB, ModifierFlag::OPTION_R,</autogen>
+ </item>
+ <item>
+  <name>Private Key5 WindowSwitcher(APP)</name>
+  <appendix>Change OPTION_L + TAB to COMMAND_L + F1</appendix>
+  <identifier>private.app_optionL_tab_to_commandL_f1</identifier>
+  <autogen>__KeyToKey__ KeyCode::TAB, ModifierFlag::OPTION_L, KeyCode::F1, ModifierFlag::COMMAND_L,</autogen>
+ </item>
+ <item>
+  <name>Private Key6 WindowSwitcher(APP)</name>
+  <appendix>Change CONTROL_L + 1 to COMMAND_L + F1</appendix>
+  <identifier>private.app_controlL_1_to_commandL_f1</identifier>
+  <autogen>__KeyToKey__ KeyCode::KEY_1, ModifierFlag::CONTROL_L, KeyCode::F1, ModifierFlag::COMMAND_L,</autogen>
+ </item>
+ <item>
+     <name>CONTROL_L + Space to KANA/EISUU (toggle)</name>
+     <appendix>(+ For Terminal use, KANA/EISUU (toggle))</appendix>
+     <identifier>remap.jis_controlL_space2toggle_kana_eisuu</identifier>
+     <autogen>__KeyToKey__ KeyCode::SPACE, ModifierFlag::CONTROL_L, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
+ </item>
+ <item>
+ 	<name>Control_L to Command_L (except Terminal, RDC)</name>
+	<identifier>remap.controlL2commandL_excustom(chrome on)</identifier>
+	<not>TERMINAL, REMOTEDESKTOPCONNECTION, MACVIM</not>
+	<autogen>__KeyToKey__ KeyCode::CONTROL_L, KeyCode::COMMAND_L</autogen>
+ </item>
+ <item>
+ 	<name>Forward Delete Function</name>
+	<identifier>remap.delete_function</identifier>
+	<autogen>__KeyToKey__ KeyCode::D, ModifierFlag::COMMAND_R, KeyCode::FORWARD_DELETE,</autogen>
+ </item>
+   <item>
+ 	<name>PageUp</name>
+	<identifier>remap.pageup</identifier>
+	<autogen>__KeyToKey__ KeyCode::P, ModifierFlag::COMMAND_R, KeyCode::PAGEUP,</autogen>
+ </item>
+  <item>
+ 	<name>PageDown</name>
+	<identifier>remap.pagedown</identifier>
+	<autogen>__KeyToKey__ KeyCode::N, ModifierFlag::COMMAND_R, KeyCode::PAGEDOWN,</autogen>
+ </item>
+   <item>
+ 	<name>Home</name>
+	<identifier>remap.home</identifier>
+	<autogen>__KeyToKey__ KeyCode::U, ModifierFlag::COMMAND_R, KeyCode::HOME,</autogen>
+ </item>
+   <item>
+ 	<name>End</name>
+	<identifier>remap.end</identifier>
+	<autogen>__KeyToKey__ KeyCode::I, ModifierFlag::COMMAND_R, KeyCode::END,</autogen>
+ </item>
+ <item>
+ 	<name>Line Selection</name>
+	<identifier>remap.line</identifier>
+	<not>TERMINAL</not>
+	<autogen>__KeyToKey__ KeyCode::V, ModifierFlag::COMMAND_R, KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::CURSOR_DOWN, ModifierFlag::SHIFT_L</autogen>
+ </item>
+  <item>
+ 	<name>ESC</name>
+	<identifier>remap.esc</identifier>
+	<not>TERMINAL</not>
+	<autogen>__KeyToKey__ KeyCode::C, ModifierFlag::COMMAND_R, KeyCode::ESCAPE</autogen>
+ </item>
+ <item>
+<name>AutoClosing</name>
+ 	<identifier>remap.auto_closing</identifier>
+ 	<not>FIREFOX</not>
+ 	<autogen>__KeyToKey__ KeyCode::KEY_2, ModifierFlag::CONTROL_L, KeyCode::KEY_2, ModifierFlag::SHIFT_L, KeyCode::KEY_2, ModifierFlag::SHIFT_L, KeyCode::CURSOR_LEFT</autogen>
+ 	<autogen>__KeyToKey__ KeyCode::KEY_7, ModifierFlag::CONTROL_L, KeyCode::KEY_7, ModifierFlag::SHIFT_L, KeyCode::KEY_7, ModifierFlag::SHIFT_L, KeyCode::CURSOR_LEFT</autogen>
+ 	<autogen>__KeyToKey__ KeyCode::KEY_8, ModifierFlag::CONTROL_L, KeyCode::KEY_8, ModifierFlag::SHIFT_L, KeyCode::KEY_9, ModifierFlag::SHIFT_L, KeyCode::CURSOR_LEFT</autogen>
+ 	<autogen>__KeyToKey__ KeyCode::JIS_BRACKET_LEFT, ModifierFlag::CONTROL_L, KeyCode::JIS_BRACKET_LEFT, ModifierFlag::SHIFT_L, KeyCode::JIS_BRACKET_RIGHT, ModifierFlag::SHIFT_L, KeyCode::CURSOR_LEFT</autogen>
+    <autogen>__KeyToKey__ KeyCode::COMMA, ModifierFlag::CONTROL_L, KeyCode::COMMA, ModifierFlag::SHIFT_L, KeyCode::DOT, ModifierFlag::SHIFT_L, KeyCode::CURSOR_LEFT</autogen>	
+ </item>
+ <item>
+<name>Enter</name>
+ 	<identifier>enterkey.map</identifier>
+	<autogen>__KeyToKey__ KeyCode::SPACE, ModifierFlag::COMMAND_R, KeyCode::ENTER,</autogen>
+ </item>
+</root>
